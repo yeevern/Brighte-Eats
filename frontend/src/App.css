@@ -457,13 +457,25 @@ button:disabled {
   display: flex;
   justify-content: space-between;
   gap: 12px;
-  align-items: center;
+  align-items: flex-start;
+}
+
+.lead-name {
+  min-width: 0;
+  flex: 1;
+  overflow-wrap: anywhere;
+}
+
+.lead-email {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .lead-chip {
+  flex-shrink: 0;
   border-radius: 999px;
   background: rgba(148, 163, 184, 0.16);
-  color: #e2e8f0;
+  color: var(--text-secondary);
   border: 1px solid rgba(148, 163, 184, 0.24);
   padding: 4px 10px;
   font-size: 0.85rem;

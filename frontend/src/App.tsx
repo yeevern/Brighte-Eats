@@ -249,10 +249,10 @@ function App() {
              {leads.map((lead) => (
                <li key={lead.id} className="lead-item">
                  <div className="lead-top">
-                   <strong>{lead.name}</strong>
+                   <strong className="lead-name">{lead.name}</strong>
                    <span className="lead-chip">{lead.postcode}</span>
                  </div>
-                 <span>{lead.email}</span>
+                 <span className="lead-email">{lead.email}</span>
                  <div className="service-badges">
                    {lead.services.map((service) => (
                      <span key={service} className={`service-badge ${service}`}>
