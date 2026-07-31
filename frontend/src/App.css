@@ -234,7 +234,7 @@ button {
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
   color: #f8fafc;
   padding: 12px 16px;
-  border-radius: 999px;
+  border-radius: 4px;
   font: inherit;
   font-weight: 700;
   cursor: pointer;
@@ -274,7 +274,7 @@ button:disabled {
   gap: 8px;
   border: 1px solid var(--service-option-border);
   padding: 10px 12px;
-  border-radius: 999px;
+  border-radius: 15px;
   background: var(--service-option-bg);
   color: var(--service-option-text);
   box-shadow: var(--service-option-shadow);
