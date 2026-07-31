@@ -67,7 +67,7 @@ Where AI helped:
 - drafting the initial tests and README
 
 One place I checked or corrected AI output:
-- I corrected the initial storage choice after the first attempt hit a native-module build issue with `better-sqlite3` on this Windows environment, and switched to Node's built-in SQLite support instead.
+- I corrected the initial storage choice after the first attempt hit a native-module build issue with `better-sqlite3` on this Windows environment, and switched to Node's built-in SQLite support instead. I changed it because `better-sqlite3` needed native compilation on my Windows setup and failed without Visual Studio build tools, so I kept the project easy to run by using the built-in option.
 
 ## Notes
 
