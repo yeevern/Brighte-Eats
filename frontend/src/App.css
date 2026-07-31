@@ -117,20 +117,54 @@ button:disabled {
 }
 
 .checkbox-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
 }
 
-.checkbox-pill {
-  display: inline-flex;
+.service-option {
+  display: flex;
   align-items: center;
   gap: 8px;
-  border: 1px solid #cbd5e1;
-  padding: 8px 12px;
+  border: 1px solid #e2e8f0;
+  padding: 10px 12px;
   border-radius: 999px;
-  text-transform: capitalize;
+  background: #fff;
   color: #334155;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+  width: 100%;
+}
+
+.service-option:hover {
+  border-color: #cbd5e1;
+}
+
+.service-option.selected {
+  border-color: #2563eb;
+  background: #f8fbff;
+  color: #1d4ed8;
+}
+
+.service-option input {
+  margin: 0;
+}
+
+.service-option-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.service-option-emoji {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.service-option-title {
+  font-weight: 600;
+  color: inherit;
+  text-transform: capitalize;
 }
 
 .field-error {

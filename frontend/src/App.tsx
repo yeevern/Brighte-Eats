@@ -14,8 +14,26 @@ const initialForm: FormState = {
   services: [],
 };
 
-const serviceOptions = ['delivery', 'pick-up', 'payment'] as const;
-type ServiceFilterValue = (typeof serviceOptions)[number] | '';
+const serviceOptions = [
+  {
+    value: 'delivery',
+    label: 'Delivery',
+    emoji: '🚚',
+  },
+  {
+    value: 'pick-up',
+    label: 'Pick-up',
+    emoji: '🛍️',
+  },
+  {
+    value: 'payment',
+    label: 'Payment',
+    emoji: '💳',
+  },
+] as const;
+
+type ServiceValue = (typeof serviceOptions)[number]['value'];
+type ServiceFilterValue = ServiceValue | '';
 
 function App() {
   const [form, setForm] = useState<FormState>(initialForm);
@@ -98,7 +116,7 @@ function App() {
     }
   };
 
-  const toggleService = (service: string) => {
+  const toggleService = (service: ServiceValue) => {
     setForm((current) => ({
       ...current,
       services: current.services.includes(service)
@@ -164,13 +182,19 @@ function App() {
               <legend>Services</legend>
               <div className="checkbox-grid">
                 {serviceOptions.map((service) => (
-                  <label key={service} className="checkbox-pill">
+                  <label
+                    key={service.value}
+                    className={`service-option ${form.services.includes(service.value) ? 'selected' : ''}`}
+                  >
                     <input
                       type="checkbox"
-                      checked={form.services.includes(service)}
-                      onChange={() => toggleService(service)}
+                      checked={form.services.includes(service.value)}
+                      onChange={() => toggleService(service.value)}
                     />
-                    {service}
+                    <span className="service-option-content">
+                      <span className="service-option-emoji">{service.emoji}</span>
+                      <span className="service-option-title">{service.label}</span>
+                    </span>
                   </label>
                 ))}
               </div>
@@ -201,8 +225,8 @@ function App() {
              >
                <option value="">All services</option>
                {serviceOptions.map((service) => (
-                 <option key={service} value={service}>
-                   {service}
+                 <option key={service.value} value={service.value}>
+                   {service.label}
                  </option>
                ))}
              </select>
