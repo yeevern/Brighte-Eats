@@ -25,6 +25,7 @@ function App() {
   const [isLoadingLeads, setIsLoadingLeads] = useState(true);
   const [statusMessage, setStatusMessage] = useState('');
   const [selectedService, setSelectedService] = useState<ServiceFilterValue>('');
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const loadLeads = async (service: ServiceFilterValue = '') => {
     setIsLoadingLeads(true);
@@ -74,6 +75,7 @@ function App() {
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     setStatusMessage('');
+    setShowSuccessModal(false);
     const nextErrors = validate();
     setErrors(nextErrors);
 
@@ -84,7 +86,7 @@ function App() {
     setIsSubmitting(true);
     try {
       await createLead(form);
-      setStatusMessage('Thanks! Your expression of interest was saved.');
+      setShowSuccessModal(true);
       setForm(initialForm);
       setErrors({});
       await loadLeads(selectedService);
@@ -233,6 +235,18 @@ function App() {
          )}
         </section>
       </main>
+
+      {showSuccessModal && (
+        <div className="modal-backdrop" onClick={() => setShowSuccessModal(false)}>
+          <div className="modal-card" onClick={(event) => event.stopPropagation()}>
+            <h3>Thanks!</h3>
+            <p>Your expression of interest was saved.</p>
+            <button type="button" onClick={() => setShowSuccessModal(false)}>
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

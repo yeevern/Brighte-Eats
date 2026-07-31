@@ -162,6 +162,27 @@ button:disabled {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  max-height: 480px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.lead-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.lead-list::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 999px;
+}
+
+.lead-list::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
+}
+
+.lead-list::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
 }
 
 .lead-item {
@@ -211,7 +232,39 @@ button:disabled {
   color: #64748b;
   margin-top: 8px;
 }
-
+ 
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1000;
+}
+ 
+.modal-card {
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  width: min(100%, 420px);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: center;
+}
+ 
+.modal-card h3 {
+  margin: 0;
+  color: #0f172a;
+}
+ 
+.modal-card p {
+  color: #475569;
+}
+ 
 @media (max-width: 800px) {
   .content-grid {
     grid-template-columns: 1fr;

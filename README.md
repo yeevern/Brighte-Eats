@@ -31,6 +31,8 @@ A simple full-stack app for collecting expressions of interest for Brighte Eats.
 - A React form that submits leads to the API
 - A leads list that fetches and displays saved submissions
 - A service-type filter for the leads list
+- A success popup after a lead is submitted
+- A scrollable leads list for larger result sets
 - Server-side validation for the core fields and service selection
 
 ## Why I chose SQLite and Express
@@ -56,7 +58,6 @@ The backend validates: name, email, mobile, postcode, and at least one selected 
 ## TODOs / known gaps
 
 - No authentication or authorization
-- No pagination for large numbers of leads
 - No deployment configuration yet
 
 ## AI Assistance
