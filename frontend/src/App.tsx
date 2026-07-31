@@ -19,16 +19,19 @@ const serviceOptions = [
     value: 'delivery',
     label: 'Delivery',
     emoji: '🚚',
+    accent: 'delivery',
   },
   {
     value: 'pick-up',
     label: 'Pick-up',
     emoji: '🛍️',
+    accent: 'pickup',
   },
   {
     value: 'payment',
     label: 'Payment',
     emoji: '💳',
+    accent: 'payment',
   },
 ] as const;
 
@@ -128,9 +131,13 @@ function App() {
   return (
     <div className="app-shell">
       <header className="hero-card">
-        <p className="eyebrow">Brighte Eats</p>
-        <h1>Register your interest</h1>
-        <p>Tell us which services you want to hear about and we will keep you posted.</p>
+        <div className="hero-top">
+          <div>
+            <p className="eyebrow">Brighte Eats</p>
+            <h1>Register your interest</h1>
+            <p>Tell us which services you want to hear about and we will keep you posted.</p>
+          </div>
+        </div>
       </header>
 
       <main className="content-grid">
@@ -184,7 +191,7 @@ function App() {
                 {serviceOptions.map((service) => (
                   <label
                     key={service.value}
-                    className={`service-option ${form.services.includes(service.value) ? 'selected' : ''}`}
+                    className={`service-option ${service.accent} ${form.services.includes(service.value) ? 'selected' : ''}`}
                   >
                     <input
                       type="checkbox"
@@ -248,7 +255,7 @@ function App() {
                  <span>{lead.email}</span>
                  <div className="service-badges">
                    {lead.services.map((service) => (
-                     <span key={service} className="service-badge">
+                     <span key={service} className={`service-badge ${service}`}>
                        {service}
                      </span>
                    ))}
